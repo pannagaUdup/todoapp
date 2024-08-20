@@ -41,29 +41,18 @@ public class TodoappController {
     // return taskService.saveTask(task);
     // }
 
-    /*
-     * @PutMapping("/{id}")
-     * public ResponseEntity<task> updateTask(@PathVariable Long id, @RequestBody
-     * task taskDetails) {
-     * return taskService.getTaskById(id)
-     * .map(task -> {
-     * task.setTitle(taskDetails.getTitle());
-     * task.setDescription(taskDetails.getDescription());
-     * task.setCompleted(taskDetails.isCompleted());
-     * Task updatedTask = taskService.saveTask(task);
-     * return ResponseEntity.ok().body(updatedTask);
-     * })
-     * .orElse(ResponseEntity.notFound().build());
-     * }
-     * 
-     * @DeleteMapping("/{id}")
-     * public ResponseEntity<?> deleteTask(@PathVariable Long id) {
-     * return taskService.getTaskById(id)
-     * .map(task -> {
-     * taskService.deleteTask(id);
-     * return ResponseEntity.ok().build();
-     * })
-     * .orElse(ResponseEntity.notFound().build());
-     * }
-     */
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteTodoTask(@PathVariable Integer id) {
+        // TODO: process POST request
+        return taskService.deleteTodoTask(id);
+    }
+
+    @PutMapping("{id}/complete/{completed}")
+    public ResponseEntity<task> updateTaskCompletion(
+            @PathVariable Integer id,
+            @PathVariable boolean completed) {
+        task updatedTask = taskService.updateTaskCompletion(id, completed);
+        return ResponseEntity.ok(updatedTask);
+    }
+
 }
