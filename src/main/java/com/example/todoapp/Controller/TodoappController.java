@@ -21,29 +21,11 @@ public class TodoappController {
 
     @PostMapping("add")
     public ResponseEntity<String> addQuestion(@RequestBody task addtask) {
-        // TODO: process POST request
         return taskService.addTaskToDB(addtask);
     }
-    // @GetMapping
-    // public List<task> getAllTasks() {
-    // return taskService.getAllTasks();
-    // }
-
-    // @GetMapping("/{id}")
-    // public ResponseEntity<task> getTaskById(@PathVariable Long id) {
-    // return taskService.getTaskById(id)
-    // .map(task -> ResponseEntity.ok().body(task))
-    // .orElse(ResponseEntity.notFound().build());
-    // }
-
-    // @PostMapping
-    // public task createTask(@RequestBody task task) {
-    // return taskService.saveTask(task);
-    // }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteTodoTask(@PathVariable Integer id) {
-        // TODO: process POST request
         return taskService.deleteTodoTask(id);
     }
 
